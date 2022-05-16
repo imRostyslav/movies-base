@@ -12,7 +12,7 @@ export class MovieEntity {
 	yearReleased: number;
 
 	@Column()
-	runtime: string;
+	time: string;
 
 	@Column()
 	genre: string;

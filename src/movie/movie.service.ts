@@ -22,7 +22,4 @@ export class MovieService {
     );
     return data;
   }
-  // async saveMovie(movie: MovieInfoResponseDto): Promise<MovieInfoResponseDto> {
-  //   const movieEntity = new MovieEntity();
-  // }
 }

@@ -1,12 +1,15 @@
+import { MovieInfoResponseDto } from 'src/movie/dto/movie.Info.Response.dto';
 import { MovieEntity } from 'src/movie/movie.entity';
 import { EntityRepository, Repository } from 'typeorm';
 
 @EntityRepository(MovieEntity)
 export class MovieRepository extends Repository<MovieEntity>{
-	async getAllMovies(): Promise<MovieEntity[]> {
-		return await this.find();
+	getAllMovies(): Promise<MovieEntity[]> {
+		return this.find();
 	}
-	async saveMovie(movie: MovieEntity): Promise<MovieEntity> {
-		return await this.save(movie);
-	}
+	// 	async saveMovie(movie: MovieInfoResponseDto): Promise<MovieInfoResponseDto> {
+	// 		const newMovie = new MovieEntity();
+
+	// 		return await this.save(newMovie);
+	// 	}
 }
