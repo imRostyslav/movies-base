@@ -11,6 +11,8 @@ const config: ConnectionOptions = {
 	password: 'thepw',
 	database: 'mydb',
 	entities: [MovieEntity],
-	synchronize: true,
+	synchronize: false,
+	migrations: [__dirname + '/migrations/**/*{.ts, .js}'],
+	cli: { migrationsDir: 'src/migrations', },
 };
 export default config;
