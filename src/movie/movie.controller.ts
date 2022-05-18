@@ -1,6 +1,5 @@
 import { Controller, Get, Query, Req } from '@nestjs/common';
 import { GetMovieInfoDto } from './dto/get.Movie.Info.dto';
-import { MovieInfoResponseDto } from './dto/movie.Info.Response.dto';
 import { MovieService } from './movie.service';
 
 
