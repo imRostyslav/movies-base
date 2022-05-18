@@ -8,11 +8,11 @@ export class MovieEntity {
 	@Column()
 	title: string;
 
-	@Column()
+	@Column({ default: 0 })
 	yearReleased: number;
 
 	@Column()
-	time: string;
+	runtime: string;
 
 	@Column()
 	genre: string;

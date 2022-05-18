@@ -11,7 +11,7 @@ export class MovieRepository extends Repository<MovieEntity>{
 		const newMovie = new MovieEntity();
 		newMovie.genre = movie.Genre;
 		newMovie.imdbRating = movie.ImdbRating;
-		newMovie.time = movie.Runtime;
+		newMovie.runtime = movie.Runtime;
 		newMovie.title = movie.Title;
 		newMovie.yearReleased = movie.YearReleased;
 		return this.save(newMovie);
