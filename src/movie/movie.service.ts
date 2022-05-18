@@ -3,7 +3,7 @@ import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 import { MovieInfoResponseDto } from './dto/movie.Info.Response.dto';
 import { ConfigService } from '@nestjs/config';
-import { MovieRepository } from 'src/database/repositories/movie.repository'; 
+import { MovieRepository } from 'src/repositories/movie.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
@@ -20,6 +20,7 @@ export class MovieService {
     const { data } = await firstValueFrom(
       this.httpService.get(`/?t=${title}&apikey=${this.API_KEY}`),
     );
+    await this.movieRepository.saveMovie(data);
     return data;
   }
 }

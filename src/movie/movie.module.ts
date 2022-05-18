@@ -4,7 +4,7 @@ import {
   getConnectionToken,
   getRepositoryToken
 } from '@nestjs/typeorm';
-import { MovieRepository } from 'src/database/repositories/movie.repository';
+import { MovieRepository } from 'src/repositories/movie.repository';
 import { MovieController } from './movie.controller';
 import { MovieService } from './movie.service';
 
@@ -22,4 +22,4 @@ import { MovieService } from './movie.service';
       inject: [getConnectionToken('DATABASE_CONNECTION')],
     },],
 })
-export class MovieModule {}
+export class MovieModule { }

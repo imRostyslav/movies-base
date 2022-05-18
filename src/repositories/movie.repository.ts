@@ -7,9 +7,13 @@ export class MovieRepository extends Repository<MovieEntity>{
 	getAllMovies(): Promise<MovieEntity[]> {
 		return this.find();
 	}
-	// 	async saveMovie(movie: MovieInfoResponseDto): Promise<MovieInfoResponseDto> {
-	// 		const newMovie = new MovieEntity();
-
-	// 		return await this.save(newMovie);
-	// 	}
+	saveMovie(movie: MovieInfoResponseDto): Promise<MovieEntity> {
+		const newMovie = new MovieEntity();
+		newMovie.genre = movie.Genre;
+		newMovie.imdbRating = movie.ImdbRating;
+		newMovie.time = movie.Runtime;
+		newMovie.title = movie.Title;
+		newMovie.yearReleased = movie.YearReleased;
+		return this.save(newMovie);
+	}
 }
