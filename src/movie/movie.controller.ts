@@ -3,10 +3,9 @@ import { GetMovieInfoDto } from './dto/get.Movie.Info.dto';
 import { MovieEntity } from './movie.entity';
 import { MovieService } from './movie.service';
 
-
 @Controller()
 export class MovieController {
-  constructor(private readonly movieService: MovieService) { }
+  constructor(private readonly movieService: MovieService) {}
 
   @Get('movie')
   findInfo(@Query() params: GetMovieInfoDto) {
@@ -15,6 +14,6 @@ export class MovieController {
   }
   @Get('movies')
   getAllMovies(): Promise<MovieEntity[]> {
-    return this.getAllMovies();
+    return this.movieService.getAllMovies();
   }
 }

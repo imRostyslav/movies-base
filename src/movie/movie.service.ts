@@ -5,6 +5,7 @@ import { MovieInfoResponseDto } from './dto/movie.Info.Response.dto';
 import { ConfigService } from '@nestjs/config';
 import { MovieRepository } from 'src/repositories/movie.repository';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MovieEntity } from "./movie.entity";
 
 @Injectable()
 export class MovieService {
@@ -12,8 +13,9 @@ export class MovieService {
   constructor(
     private httpService: HttpService,
     private configService: ConfigService,
-    @InjectRepository(MovieRepository, 'DATABASE_CONNECTION')
-    private movieRepository: MovieRepository) {
+    @InjectRepository(MovieRepository, 'default')
+    private movieRepository: MovieRepository,
+  ) {
     this.API_KEY = this.configService.get<string>('API_KEY');
   }
   async getMovieInfo(title: string): Promise<MovieInfoResponseDto> {
@@ -22,5 +24,9 @@ export class MovieService {
     );
     await this.movieRepository.saveMovie(data);
     return data;
+  }
+
+  getAllMovies(): Promise<MovieEntity[]> {
+    return this.movieRepository.getAllMovies();
   }
 }

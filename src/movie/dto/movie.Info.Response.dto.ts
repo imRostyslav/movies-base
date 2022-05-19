@@ -5,8 +5,8 @@ export class MovieInfoResponseDto {
   @IsString()
   readonly Title: string;
 
-  @IsNumber()
-  readonly YearReleased: number;
+  @IsString()
+  readonly Released: string;
 
   @IsString()
   readonly Runtime: string;
@@ -15,5 +15,5 @@ export class MovieInfoResponseDto {
   readonly Genre: string;
 
   @IsNumber()
-  readonly ImdbRating: number;
+  readonly imdbRating: number;
 }

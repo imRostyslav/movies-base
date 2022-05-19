@@ -3,7 +3,7 @@ import { MovieEntity } from './movie/movie.entity';
 
 
 const config: ConnectionOptions = {
-	name: 'DATABASE_CONNECTION',
+	name: 'default',
 	type: 'mysql',
 	host: '127.0.0.1',
 	port: 3306,
