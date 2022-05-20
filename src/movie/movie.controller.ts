@@ -11,8 +11,8 @@ export class MovieController {
   constructor(private readonly movieService: MovieService) { }
 
   @Get('movie')
-  @ApiResponse({ status: 201, description: 'The record has been successfully created.' })
-  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  @ApiResponse({ status: 200, description: 'The found movie' })
+  @ApiResponse({ status: 404, description: 'Movie not found' })
   findInfo(@Query() params: GetMovieInfoDto) {
     const movieData = this.movieService.getMovieInfo(params.title);
     return movieData;
