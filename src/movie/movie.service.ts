@@ -6,6 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { MovieRepository } from 'src/repositories/movie.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MovieEntity } from "./movie.entity";
+import { DeleteResult } from 'typeorm';
 
 @Injectable()
 export class MovieService {
@@ -28,5 +29,10 @@ export class MovieService {
 
   getAllMovies(): Promise<MovieEntity[]> {
     return this.movieRepository.getAllMovies();
+  }
+
+  deleteMovieById(id: number): Promise<DeleteResult> {
+    console.log(`The movie ID:${id} has been deleted`);
+    return this.movieRepository.deleteMovieById(id);
   }
 }

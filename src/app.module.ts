@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import * as Joi from 'joi';
 import { MovieModule } from './movie/movie.module';
@@ -24,7 +23,7 @@ import ormconfig from './ormconfig';
     }),
     TypeOrmModule.forRoot(ormconfig),
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [AppService],
 })
 export class AppModule { }

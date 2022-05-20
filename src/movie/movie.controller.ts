@@ -1,11 +1,12 @@
-import { Controller, Get, Query, Req } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Put, Query, Req } from '@nestjs/common';
+import { DeleteResult } from 'typeorm';
 import { GetMovieInfoDto } from './dto/get.Movie.Info.dto';
 import { MovieEntity } from './movie.entity';
 import { MovieService } from './movie.service';
 
 @Controller()
 export class MovieController {
-  constructor(private readonly movieService: MovieService) {}
+  constructor(private readonly movieService: MovieService) { }
 
   @Get('movie')
   findInfo(@Query() params: GetMovieInfoDto) {
@@ -15,5 +16,9 @@ export class MovieController {
   @Get('movies')
   getAllMovies(): Promise<MovieEntity[]> {
     return this.movieService.getAllMovies();
+  }
+  @Delete(':id')
+  deleteMovieById(@Param('id') id: number): Promise<DeleteResult> {
+    return this.movieService.deleteMovieById(id);
   }
 }

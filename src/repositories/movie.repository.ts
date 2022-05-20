@@ -1,6 +1,6 @@
 import { MovieInfoResponseDto } from 'src/movie/dto/movie.Info.Response.dto';
 import { MovieEntity } from 'src/movie/movie.entity';
-import { EntityRepository, Repository } from 'typeorm';
+import { DeleteResult, EntityRepository, Repository } from 'typeorm';
 
 @EntityRepository(MovieEntity)
 export class MovieRepository extends Repository<MovieEntity> {
@@ -15,5 +15,8 @@ export class MovieRepository extends Repository<MovieEntity> {
     newMovie.title = movie.Title;
     newMovie.released = movie.Released;
     return this.save(newMovie);
+  }
+  deleteMovieById(id: number): Promise<DeleteResult> {
+    return this.delete(id);
   }
 }
