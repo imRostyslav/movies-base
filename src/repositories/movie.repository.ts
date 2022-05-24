@@ -10,7 +10,8 @@ export class MovieRepository extends Repository<MovieEntity> {
   saveMovie(movie: MovieInfoResponseDto): Promise<MovieEntity> {
     const newMovie = new MovieEntity();
     newMovie.genre = movie.Genre;
-    newMovie.imdbRating = movie.imdbRating;
+    newMovie.imdbRating = parseFloat(movie.imdbRating);
+    console.log(newMovie.imdbRating);
     newMovie.runtime = movie.Runtime;
     newMovie.title = movie.Title;
     newMovie.released = movie.Released;

@@ -24,6 +24,6 @@ export class MovieEntity {
   genre: string;
 
   @ApiProperty()
-  @Column()
+  @Column({ type: 'double', precision: 4, scale: 2 })
   imdbRating: number;
 }

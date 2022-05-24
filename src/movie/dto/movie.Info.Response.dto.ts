@@ -20,6 +20,6 @@ export class MovieInfoResponseDto {
   readonly Genre: string;
 
   @ApiProperty()
-  @IsNumber()
-  readonly imdbRating: number;
+  @IsString()
+  readonly imdbRating: string;
 }

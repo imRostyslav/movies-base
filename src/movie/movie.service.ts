@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 import { MovieInfoResponseDto } from './dto/movie.Info.Response.dto';
@@ -31,8 +31,14 @@ export class MovieService {
     return this.movieRepository.getAllMovies();
   }
 
-  deleteMovieById(id: number): Promise<DeleteResult> {
-    console.log(`The movie ID:${id} has been deleted`);
-    return this.movieRepository.deleteMovieById(id);
+  async deleteMovieById(id: number): Promise<DeleteResult> {
+    const deleteResult = await this.movieRepository.deleteMovieById(id);
+    if (deleteResult.affected) {
+      console.log(`The movie ID:${id} has been deleted`);
+    } else {
+      console.log(`The movie ID:${id} not found`);
+      throw new NotFoundException(`The movie ID:${id} not found`);
+    }
+    return deleteResult;
   }
 }
